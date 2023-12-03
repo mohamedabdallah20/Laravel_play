@@ -8,7 +8,7 @@ Route::get('/admin', function () {
 });
 
 // Combine many class into namespace
-Route::namespace('App\Http\Controllers')->group(function(){
+Route::namespace('App\Http\Controllers\User')->group(function(){
 
 // set prefix for set of routes
     Route::prefix('users')->group(function(){
