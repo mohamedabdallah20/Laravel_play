@@ -141,3 +141,5 @@ return 'You must login first';
 
 // Route Resource 
 Route::resource('photos','ExampleController');
+Route::delete('photos/force/delete/{photo}','ExampleController@forceDelete');
+Route::post('photos/restore/{photo}','ExampleController@restore');
