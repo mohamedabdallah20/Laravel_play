@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\Facades\Redirect;
+
+
+use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\ExampleController;
 // enum section: string{
 //     case phone='phone';
@@ -143,3 +145,7 @@ return 'You must login first';
 Route::resource('photos','ExampleController');
 Route::delete('photos/force/delete/{photo}','ExampleController@forceDelete');
 Route::post('photos/restore/{photo}','ExampleController@restore');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
