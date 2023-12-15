@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\NameRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class TestCreate extends FormRequest
 {
@@ -12,6 +13,7 @@ class TestCreate extends FormRequest
      */
     public function authorize(): bool
     {
+        // return Gate::allows('isAdmin');
         return true;
     }
 
@@ -26,6 +28,7 @@ class TestCreate extends FormRequest
             //
             'name'=>['required','string'],
             'content'=>'required|string',
+            'user_id'=>'required',
         ];
     }
 }

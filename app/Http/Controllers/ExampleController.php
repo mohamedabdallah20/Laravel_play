@@ -6,6 +6,7 @@ use App\Http\Requests\TestCreate;
 use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 use function Laravel\Prompts\error;
 
@@ -27,6 +28,11 @@ class ExampleController extends Controller
     public function create()
     {
         // 
+        // auth()->user()->can('create',Test::class);
+        // $this->authorize('create',Test::class);
+        if(Gate::allows('create',Test::class)){
+            return 'Done authorize';
+        }
     }
 
     /**
@@ -55,7 +61,15 @@ class ExampleController extends Controller
      */
     public function show(string $id)
     {
-        return Test::find($id);
+        // $this->authorize('isAdmin');
+        // if(!Gate::allows('isUser')){
+        //     return '(403)';
+        // }
+            $test = Test::find($id);
+        if($this->authorize('view',$test))   {
+
+            return $test;
+        }
     }
 
     /**

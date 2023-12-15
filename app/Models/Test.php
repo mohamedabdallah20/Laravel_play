@@ -14,7 +14,8 @@ class Test extends Model
         'name',
         'content',
         'status',
-        'show'
+        'show',
+        'user_id'
     ];
 
     public function getNameAttribute($value){

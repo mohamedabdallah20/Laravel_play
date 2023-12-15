@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin', function () {
     return 'Admin page';
-});
+})->middleware('can:isUser');
 
 // Combine many class into namespace
 Route::namespace('App\Http\Controllers\User')->group(function(){
