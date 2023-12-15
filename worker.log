@@ -1,0 +1,22 @@
+  2023-12-14 16:16:10 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 16:16:16 App\Jobs\JobDemoBatch .......................... 5s DONE
+  2023-12-14 16:16:16 App\Jobs\JobDemo ............................... RUNNING
+  2023-12-14 16:16:19 App\Jobs\JobDemo ............................... 2s DONE
+  2023-12-14 16:16:52 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 16:16:55 App\Jobs\JobDemoBatch .......................... 3s DONE
+  2023-12-14 16:16:55 App\Jobs\JobDemo ............................... RUNNING
+  2023-12-14 16:16:57 App\Jobs\JobDemo ............................... 2s DONE
+  2023-12-14 19:30:07 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 19:30:07 App\Jobs\JobDemoBatch .................... 293.70ms FAIL
+  2023-12-14 19:30:10 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 19:30:10 App\Jobs\JobDemoBatch ..................... 44.92ms FAIL
+  2023-12-14 19:30:12 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 19:30:12 App\Jobs\JobDemoBatch ..................... 48.10ms FAIL
+  2023-12-14 19:30:14 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 19:30:17 App\Jobs\JobDemoBatch .......................... 2s DONE
+  2023-12-14 19:30:17 App\Jobs\JobDemoBatch .......................... RUNNING
+  2023-12-14 19:30:18 App\Jobs\JobDemoBatch .......................... 1s DONE
+  2023-12-14 19:30:18 App\Jobs\JobDemo ............................... RUNNING
+  2023-12-14 19:30:19 App\Jobs\JobDemo ......................... 951.31ms DONE
+  2023-12-14 19:30:19 App\Jobs\JobDemo ............................... RUNNING
+  2023-12-14 19:30:20 App\Jobs\JobDemo ............................... 1s DONE

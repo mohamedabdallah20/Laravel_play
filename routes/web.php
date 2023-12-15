@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Mail;
 
 // use App\Http\Controllers\ExampleController;
@@ -183,7 +184,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middlewa
 // });
 
 Route::get('/send/demo',function(){
-    $data = ['title'=>'test title','content'=>'test content'];
-    Mail::to('test@test.com')->send(new \App\Mail\DemoMail($data));
+
+    // dispatch(new \App\Jobs\JobDemoBatch());
+    // dispatch(new \App\Jobs\JobDemo());
+
+    Bus::batch([[
+        new \App\Jobs\JobDemoBatch(),
+        new \App\Jobs\JobDemo()
+    ]])->dispatch();
 });
 
