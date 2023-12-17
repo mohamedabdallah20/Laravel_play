@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Test;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
 
@@ -194,3 +196,52 @@ Route::get('/send/demo',function(){
     ]])->dispatch();
 });
 
+Route::get('collection',function(){
+
+    $test = Test::all();
+    // $collection =  new Collection([
+    //     ['name'=>'test','id'=>'1','amount'=>1000],
+    //     ['name'=>'test2','id'=>'3','amount'=>3000],
+    //     ['name'=>'test1','id'=>'2','amount'=>2000],
+
+    // ]);
+    // // dd(empty($collection->where('id','10')[0]));
+    // if(!empty($collection->where('id','1')[0])){
+    //     return $collection->where('id','1');
+    // }
+
+    // // Filter
+    // $filtered = $collection->filter(function ($item){
+    //     return data_get($item,'amount') > 1000;
+    // });
+    // return $filtered;
+
+    // // Sort
+    // return $collection->sortBy('name')->values()->toArray();
+    // return $collection->sortByDesc('amount')->values()->toArray();
+
+    // // Slice
+    // return $collection->take(2);
+
+    // // Diff
+    // $collection =  new Collection([
+    //    'Laravel','Data','PHP'
+    // ]);
+    // $collection2 =  new Collection([
+    //     'Laravel','Data','PHP','New'
+    //  ]);
+
+    //  return $collection2->diff($collection);
+
+    // // get
+    // $collection =  new Collection([
+    //     'name'=>'Laravel','id'=>'Data',
+    //  ]);
+    //  return $collection->get('name');
+
+    // // groupBY
+    // return $collection->groupBy('name');
+
+    // // implode
+    // return $collection-implode('name','--');
+});
