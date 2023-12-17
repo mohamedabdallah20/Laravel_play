@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 use function Laravel\Prompts\error;
 
@@ -19,6 +20,16 @@ class ExampleController extends Controller
     public function index()
     {
         // echo Test::get();
+        $channel = Log::build(['driver'=>'single','path'=>storage_path('logs/critical.log')]);
+        Log::info('this is Test LOG ',['id'=>1]);
+        Log::alert('this is Test LOG ',['id'=>1]);
+        Log::warning('this is Test LOG ',['id'=>1]);
+        Log::stack(['stack'=>$channel])->critical('this is Test LOG ',['id'=>1]);
+        Log::debug('this is Test LOG ',['id'=>1]);
+        Log::emergency('this is Test LOG ',['id'=>1]);
+        Log::error('this is Test LOG ',['id'=>1]);
+
+
         return DB::select('select * from tests')  ;
     }
 
@@ -48,7 +59,9 @@ class ExampleController extends Controller
         // ]);
 
         // echo $request->validated();
-        Test::create($request->validated());
+        $data = $request->validated();
+        $data['photo'] = $request->file('photo')->store('test');
+        Test::create($data);
         // $test=new Test;
         // $test->name= $request->name;
         // $test->content=$request->content;
@@ -66,6 +79,7 @@ class ExampleController extends Controller
         //     return '(403)';
         // }
             $test = Test::find($id);
+            // dd($test);
         if($this->authorize('view',$test))   {
 
             return $test;
@@ -77,7 +91,7 @@ class ExampleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

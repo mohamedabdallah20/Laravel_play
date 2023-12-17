@@ -14,6 +14,7 @@ class Test extends Model
         'name',
         'content',
         'status',
+        'photo',
         'show',
         'user_id'
     ];
