@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TestCreate;
+use App\Http\Resources\Tests;
 use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 use function Laravel\Prompts\error;
 
@@ -20,17 +22,23 @@ class ExampleController extends Controller
     public function index()
     {
         // echo Test::get();
-        $channel = Log::build(['driver'=>'single','path'=>storage_path('logs/critical.log')]);
-        Log::info('this is Test LOG ',['id'=>1]);
-        Log::alert('this is Test LOG ',['id'=>1]);
-        Log::warning('this is Test LOG ',['id'=>1]);
-        Log::stack(['stack'=>$channel])->critical('this is Test LOG ',['id'=>1]);
-        Log::debug('this is Test LOG ',['id'=>1]);
-        Log::emergency('this is Test LOG ',['id'=>1]);
-        Log::error('this is Test LOG ',['id'=>1]);
+        $tests = Test::withTrashed()->paginate(2);
+
+        $data = Tests::collection($tests);
 
 
-        return DB::select('select * from tests')  ;
+        // // LOG
+        // $channel = Log::build(['driver'=>'single','path'=>storage_path('logs/critical.log')]);
+        // Log::info('this is Test LOG ',['id'=>1]);
+        // Log::alert('this is Test LOG ',['id'=>1]);
+        // Log::warning('this is Test LOG ',['id'=>1]);
+        // Log::stack(['stack'=>$channel])->critical('this is Test LOG ',['id'=>1]);
+        // Log::debug('this is Test LOG ',['id'=>1]);
+        // Log::emergency('this is Test LOG ',['id'=>1]);
+        // Log::error('this is Test LOG ',['id'=>1]);
+
+
+        return $data ;
     }
 
     /**
@@ -59,11 +67,11 @@ class ExampleController extends Controller
         // ]);
 
         // echo $request->validated();
+        // dd($request->validated());
         $data = $request->validated();
-        $data['photo'] = $request->file('photo')->store('test');
+        $data['photo'] = request()->file('photo')->store('test');
         Test::create($data);
-        // $test=new Test;
-        // $test->name= $request->name;
+        // echo '<img src="' . asset('storage/' . $data['photo']) . '" alt="Image"/>';        // $test->name= $request->name;
         // $test->content=$request->content;
         // $test->save();
         return 'Done';
@@ -115,7 +123,13 @@ class ExampleController extends Controller
     }
     public function forceDelete(string $id){
 
-        Test::where('id',$id)->forceDelete();
+        $test = Test::withTrashed()->find($id);
+        // dd($test->photo);
+
+        if(!empty($test->photo)&&Storage::exists($test->photo)){
+            Storage::delete($test->photo);
+        }
+        $test->forceDelete();
 
         return 'Done';
     }

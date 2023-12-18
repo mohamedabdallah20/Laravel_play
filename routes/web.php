@@ -198,7 +198,7 @@ Route::get('/send/demo',function(){
 
 Route::get('collection',function(){
 
-    $test = Test::all();
+    // $test = Test::all();
     // $collection =  new Collection([
     //     ['name'=>'test','id'=>'1','amount'=>1000],
     //     ['name'=>'test2','id'=>'3','amount'=>3000],
@@ -244,4 +244,8 @@ Route::get('collection',function(){
 
     // // implode
     // return $collection-implode('name','--');
+    // .
+    // .
+    // .
+    // .
 });

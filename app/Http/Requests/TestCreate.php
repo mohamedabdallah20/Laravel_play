@@ -29,7 +29,7 @@ class TestCreate extends FormRequest
             'name'=>['required','string'],
             'content'=>'required|string',
             'user_id'=>'required',
-            'photo'=>'requires|file|image'
+            'photo'=>'required|file|image'
         ];
     }
 }
