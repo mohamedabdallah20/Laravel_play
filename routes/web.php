@@ -57,9 +57,9 @@ use Illuminate\Support\Facades\Mail;
 
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // // Middleware
@@ -131,9 +131,9 @@ use Illuminate\Support\Facades\Mail;
 // });
 
 // route name
-Route::get('/test/', function () {
-    return 'route name' ;
-})->name('route-name');
+// Route::get('/test/', function () {
+//     return 'route name' ;
+// })->name('route-name');
 
 // Route::get('/login',function(){
 // return 'You must login first';
@@ -146,14 +146,14 @@ Route::get('/test/', function () {
 // Route::myMacro();
 
 
-// Route Resource 
-Route::resource('photos','ExampleController');
-Route::delete('photos/force/delete/{photo}','ExampleController@forceDelete');
-Route::post('photos/restore/{photo}','ExampleController@restore');
+// // Route Resource 
+// Route::resource('photos','ExampleController');
+// Route::delete('photos/force/delete/{photo}','ExampleController@forceDelete');
+// Route::post('photos/restore/{photo}','ExampleController@restore');
 
-Auth::routes(['verify'=>true]);
+// Auth::routes(['verify'=>true]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 
 
 // Sessions management
@@ -185,18 +185,18 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middlewa
 //     return 'Forgot';
 // });
 
-Route::get('/send/demo',function(){
+// Route::get('/send/demo',function(){
 
-    // dispatch(new \App\Jobs\JobDemoBatch());
-    // dispatch(new \App\Jobs\JobDemo());
+//     // dispatch(new \App\Jobs\JobDemoBatch());
+//     // dispatch(new \App\Jobs\JobDemo());
 
-    Bus::batch([[
-        new \App\Jobs\JobDemoBatch(),
-        new \App\Jobs\JobDemo()
-    ]])->dispatch();
-});
+//     Bus::batch([[
+//         new \App\Jobs\JobDemoBatch(),
+//         new \App\Jobs\JobDemo()
+//     ]])->dispatch();
+// });
 
-Route::get('collection',function(){
+// Route::get('collection',function(){
 
     // $test = Test::all();
     // $collection =  new Collection([
@@ -248,4 +248,4 @@ Route::get('collection',function(){
     // .
     // .
     // .
-});
+// });
